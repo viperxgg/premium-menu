@@ -40,10 +40,14 @@
         <header class="menu-header">
             <div class="menu-nav-top">
                 <div class="nav-controls">
+                    <button class="btn-call-waiter-top" id="call-waiter-top">
+                        <span class="icon">🔔</span>
+                        <span class="text" data-en="Call Waiter" data-sv="Kontakta servitör">Kontakta servitör</span>
+                    </button>
+                    <button id="lang-toggle" class="btn-lang">EN</button>
                     <button id="menu-toggle" class="btn-menu-toggle">
                         <i data-lucide="menu"></i>
                     </button>
-                    <button id="lang-toggle" class="btn-lang">EN</button>
                 </div>
                 <div class="categories">
                     <button class="category-pill active" data-category="all">
@@ -307,13 +311,6 @@
         <section id="help-section">
             <h2 class="section-title" data-en="Need help?" data-sv="Behöver du hjälp?">Behöver du hjälp?</h2>
             <div class="help-grid">
-                <button class="help-card" id="call-waiter">
-                    <span class="help-icon">🔔</span>
-                    <div class="help-text">
-                        <h4 data-en="Call Waiter" data-sv="Kontakta servitör">Kontakta servitör</h4>
-                        <p data-en="We'll be right with you" data-sv="Vi hjälper dig strax">Vi hjälper dig strax</p>
-                    </div>
-                </button>
                 <button class="help-card" id="book-table">
                     <span class="help-icon">📅</span>
                     <div class="help-text">
@@ -330,7 +327,7 @@
                 </button>
             </div>
             <div class="footer-note">
-                <p>جميع حقوق التطبيق تعود الى smartartai.se</p>
+                <p data-en="All rights reserved to smartartai.se" data-sv="Alla rättigheter förbehållna smartartai.se">Alla rättigheter förbehållna smartartai.se</p>
             </div>
         </section>
     </section>

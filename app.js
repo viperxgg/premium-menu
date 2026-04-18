@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const langToggle = document.getElementById('lang-toggle');
     const menuHeader = document.querySelector('.menu-header');
     const menuToggle = document.getElementById('menu-toggle');
-    const callWaiterBtn = document.getElementById('call-waiter');
+    const callWaiterBtn = document.getElementById('call-waiter-top');
     const bookTableBtn = document.getElementById('book-table');
     const askAllergensBtn = document.getElementById('ask-allergens');
 
@@ -35,11 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Switching to:', currentLang);
         // We only target elements that have the language attributes
         // and we use innerHTML or textContent appropriately
-        const translatable = document.querySelectorAll('[data-en][data-sv]');
-        translatable.forEach(el => {
-            el.textContent = currentLang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-sv');
+        // Update dynamic text (buttons, footer, etc.)
+        document.querySelectorAll('[data-en]').forEach(el => {
+            el.textContent = el.getAttribute(`data-${currentLang}`);
         });
-        
+
         if (langToggle) {
             langToggle.textContent = currentLang === 'en' ? 'SV' : 'EN';
         }

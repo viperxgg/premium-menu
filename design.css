@@ -4,9 +4,9 @@
   --bg-surface: #0a0a0a;
   --bg-card: #0f0f0f;
   --accent-color: #D4AF37; 
-  --text-primary: #ffffff;
-  --text-secondary: #86868b;
-  --text-muted: #424245;
+  --text-primary: #ffffff; /* Pure white for maximum clarity */
+  --text-secondary: #d1d1d6; /* Brighter secondary text */
+  --text-muted: #8e8e93; /* Clearer muted text */
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.08);
   
@@ -130,9 +130,45 @@ body::before {
 .nav-controls {
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Align right */
+    justify-content: flex-end;
     gap: 12px;
     width: 100%;
+}
+
+.btn-call-waiter-top {
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    color: var(--accent-color);
+    padding: 8px 16px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-premium);
+}
+
+.btn-call-waiter-top:hover {
+    background: rgba(212, 175, 55, 0.25);
+    transform: translateY(-2px);
+}
+
+.btn-call-waiter-top .text {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 480px) {
+    .btn-call-waiter-top .text {
+        display: none; /* Icon only on very small screens if needed, otherwise keep text for "clarity" */
+    }
+    .btn-call-waiter-top {
+        padding: 8px;
+    }
+    /* Correction: USER asked for it to be CLEAR. Let's keep a short text or just the icon if it's too tight. 
+       Actually, let's keep the text but maybe slightly smaller. */
 }
 
 .menu-header:not(.expanded) .categories,

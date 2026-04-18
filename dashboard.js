@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const clearHistoryBtn = document.getElementById('clear-history');
     const notifSound = document.getElementById('notif-sound');
     const currentDateEl = document.getElementById('current-date');
+    const filterPills = document.querySelectorAll('.filter-pill');
+
+    let currentFilter = 'all';
 
     // --- Supabase Config ---
     const supabaseUrl = 'https://cewfpbydcltdriveqklo.supabase.co';
@@ -25,30 +28,34 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.error('Error fetching events:', error);
             return;
         }
-        renderFeed(events);
+
+        // Apply Filter
+        const filteredEvents = currentFilter === 'all' 
+            ? events 
+            : events.filter(e => e.type === currentFilter);
+
+        renderFeed(filteredEvents, events); // Send both to update stats correctly
     }
 
-    function renderFeed(events) {
-        if (!events || events.length === 0) {
-            activityFeed.innerHTML = `
-                <div class="empty-feed">
-                    <p>Waiting for incoming customer requests...</p>
-                </div>
-            `;
-            totalOrdersCount.textContent = '0';
-            activeCallsCount.textContent = '0';
-            return;
-        }
-
-        // Update Stats
-        const ordersCount = events.filter(e => e.type === 'order').length;
-        const callsCount = events.filter(e => e.type === 'assistance' && e.status === 'new').length;
+    function renderFeed(filteredEvents, allEvents) {
+        // Update Stats using all events
+        const ordersCount = allEvents.filter(e => e.type === 'order').length;
+        const callsCount = allEvents.filter(e => e.type === 'assistance' && e.status === 'new').length;
         totalOrdersCount.textContent = ordersCount;
         activeCallsCount.textContent = callsCount;
 
+        if (!filteredEvents || filteredEvents.length === 0) {
+            activityFeed.innerHTML = `
+                <div class="empty-feed">
+                    <p>No incoming requests in this category...</p>
+                </div>
+            `;
+            return;
+        }
+
         // Render Cards
         activityFeed.innerHTML = '';
-        events.forEach(event => {
+        filteredEvents.forEach(event => {
             const card = document.createElement('div');
             const isOrder = event.type === 'order';
             card.className = `event-card ${event.status === 'completed' ? 'completed' : ''} ${!isOrder ? 'assistance-alert' : ''}`;
@@ -99,6 +106,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
+    // Filter Logic
+    filterPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            filterPills.forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            currentFilter = pill.getAttribute('data-filter');
+            fetchEvents();
+        });
+    });
+
     // Resolve Event
     window.resolveEvent = async function(id) {
         const { error } = await supabase
@@ -126,7 +143,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     supabase
         .channel('public:restaurant_events')
         .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'restaurant_events' }, payload => {
-            console.log('New event received!', payload);
             fetchEvents();
             // Play sound
             if (notifSound) {

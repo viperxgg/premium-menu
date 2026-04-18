@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard | Demo Restaurant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <h1>Staff Dashboard</h1>
+                <p id="current-date"></p>
+            </div>
+            <div class="header-right">
+                <div class="status-indicator">
+                    <span class="pulse"></span> System Live
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard-grid">
+            <!-- Sidebar / Stats -->
+            <aside class="sidebar">
+                <div class="stat-card">
+                    <span class="stat-label">Total Orders (Today)</span>
+                    <span class="stat-value" id="total-orders-count">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Active Calls</span>
+                    <span class="stat-value highlight" id="active-calls-count">0</span>
+                </div>
+                <button id="clear-history" class="btn-clear">Clear Demo History</button>
+            </aside>
+
+            <!-- Main Feed -->
+            <section class="feed-section">
+                <div class="feed-header">
+                    <h2>Live Activity Feed</h2>
+                    <div class="feed-filters">
+                        <span class="filter-pill active">All</span>
+                        <span class="filter-pill">Orders</span>
+                        <span class="filter-pill">Assistance</span>
+                    </div>
+                </div>
+                <div id="activity-feed" class="activity-feed">
+                    <!-- Events will appear here -->
+                    <div class="empty-feed">
+                        <p>Waiting for incoming customer requests...</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Notification Sound (Hidden) -->
+    <audio id="notif-sound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3"></audio>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience Portal | Premium Restaurant System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --accent: #D4AF37;
+            --card-bg: rgba(255,255,255,0.03);
+            --border: rgba(255,255,255,0.1);
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .portal-container {
+            width: 90%;
+            max-width: 1000px;
+            text-align: center;
+            padding: 4rem 0;
+        }
+        .header {
+            margin-bottom: 4rem;
+        }
+        .header h1 {
+            font-weight: 200;
+            letter-spacing: 0.4rem;
+            text-transform: uppercase;
+            margin: 0;
+            background: linear-gradient(to bottom, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header p {
+            color: var(--accent);
+            letter-spacing: 0.1rem;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+        .demo-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            text-decoration: none;
+            color: white;
+            transition: all 0.5s cubic-bezier(0.85, 0, 0.15, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .demo-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            background: rgba(212, 175, 55, 0.05);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            transition: all 0.3s;
+        }
+        .demo-card:hover .icon-circle {
+            background: var(--accent);
+            color: #000;
+            transform: scale(1.1);
+        }
+        .card-text h2 {
+            font-weight: 400;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .card-text p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-top: 0.5rem;
+        }
+        .launch-btn {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            color: var(--accent);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .video-box {
+            margin-top: 4rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 1.5rem;
+        }
+        .video-box h3 {
+            font-weight: 300;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.7;
+        }
+        .video-preview {
+            width: 100%;
+            border-radius: 12px;
+            aspect-ratio: 16/9;
+            background: #111;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="portal-container">
+        <header class="header">
+            <h1>Scandinavian Crafted</h1>
+            <p>Digital Menu Ecosystem v3.0</p>
+        </header>
+
+        <div class="grid">
+            <a href="index.html" class="demo-card" target="_blank">
+                <div class="icon-circle">📱</div>
+                <div class="card-text">
+                    <h2>Guest Experience</h2>
+                    <p>Interactive premium menu optimized for mobile and speed. Includes automatic calorie tracking & recommendations.</p>
+                </div>
+                <div class="launch-btn">Launch Guest UI →</div>
+            </a>
+
+            <a href="dashboard.html" class="demo-card" target="_blank">
+                <div class="icon-circle">🖥️</div>
+                <div class="card-text">
+                    <h2>Staff Dashboard</h2>
+                    <p>Live order management system. Receives real-time assistance calls and order notifications via local sync.</p>
+                </div>
+                <div class="launch-btn">Launch Dashboard →</div>
+            </a>
+        </div>
+
+        <div class="video-box">
+            <h3>System Overview & Performance</h3>
+            <img src="demo_video.webp" alt="Full System Demo" class="video-preview">
+        </div>
+    </div>
+</body>
+</html>

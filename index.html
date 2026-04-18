@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scandinavian | Premium In-House Menu</title>
+    <meta name="description" content="Upplev den finaste skandinaviska matlagningen. Se vår interaktiva meny och beställ direkt från bordet.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="design.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <!-- Loading Splash -->
+    <div id="loading-overlay">
+        <div class="loader-content">
+            <h1 class="logo-text">Demo</h1>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <div class="glow-effect">
+        <div class="glow-item glow-1"></div>
+        <div class="glow-item glow-2"></div>
+    </div>
+
+    <!-- Home Screen -->
+    <section id="home-screen">
+        <h1 class="restaurant-name animate-fade-in">Scandinavian</h1>
+        <p class="tagline animate-fade-in" data-en="Premium Dining Experience" data-sv="En förstklassig matupplevelse">En förstklassig matupplevelse</p>
+        <div class="animate-fade-in">
+            <button id="view-menu-btn" class="btn-primary" data-en="View Menu" data-sv="Visa Meny">Visa Meny</button>
+        </div>
+    </section>
+
+    <!-- Menu Screen -->
+    <section id="menu-screen">
+        <header class="menu-header">
+            <div class="menu-nav-top">
+                <div class="nav-controls">
+                    <button id="menu-toggle" class="btn-menu-toggle">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <button id="lang-toggle" class="btn-lang">EN</button>
+                </div>
+                <div class="categories">
+                    <button class="category-pill active" data-category="all">
+                        <i data-lucide="layout-grid"></i>
+                        <span data-en="Selection" data-sv="Urval">Urval</span>
+                    </button>
+                    <button class="category-pill" data-category="appetizers">
+                        <i data-lucide="leaf"></i>
+                        <span data-en="Appetizers" data-sv="Förrätter">Förrätter</span>
+                    </button>
+                    <button class="category-pill" data-category="main">
+                        <i data-lucide="utensils"></i>
+                        <span data-en="Mains" data-sv="Varmrätter">Varmrätter</span>
+                    </button>
+                    <button class="category-pill" data-category="drinks">
+                        <i data-lucide="glass-water"></i>
+                        <span data-en="Beverages" data-sv="Dryck">Dryck</span>
+                    </button>
+                    <button class="category-pill" data-category="dessert">
+                        <i data-lucide="cake-slice"></i>
+                        <span data-en="Sweets" data-sv="Efterrätter">Efterrätter</span>
+                    </button>
+                </div>
+                <button id="cart-trigger" class="btn-cart-floating">
+                    <span id="cart-label" data-en="Order" data-sv="Beställ">Beställ</span> <span id="cart-count">0</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="menu-sections">
+            <!-- Appetizers -->
+            <div class="menu-section" id="section-appetizers">
+                <h2 class="section-title" data-en="Appetizers" data-sv="Förrätter">Förrätter</h2>
+                <div class="menu-grid">
+                    <div class="menu-card animate-fade-in" data-category="appetizers">
+                        <div class="card-image-container">
+                            <img src="public/images/bruschetta.png" alt="Bruschetta Classica" class="card-image" loading="lazy">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <h3 class="item-name" data-en="Bruschetta Classica" data-sv="Bruschetta Classica">Bruschetta Classica</h3>
+                                <span class="item-price">89 SEK</span>
+                            </div>
+                            <p class="item-description" data-en="Grilled bread topped with fresh tomatoes and basil" data-sv="Grillat bröd toppat med färska tomater och basilika">Grillat bröd toppat med färska tomater och basilika</p>
+                            <div class="card-actions">
+                                <button class="btn-secondary preview-btn" 
+                                    data-img="public/images/bruschetta.png" 
+                                    data-name-en="Bruschetta Classica" data-name-sv="Bruschetta Classica"
+                                    data-price="89 SEK" 
+                                    data-desc-en="Grilled bread topped with fresh tomatoes and basil" data-desc-sv="Grillat bröd toppat med färska tomater och basilika"
+                                    data-ingredients-en="Fresh tomatoes, basil, garlic, olive oil, balsamic glaze, sourdough" data-ingredients-sv="Färska tomater, basilika, vitlök, olivolja, balsamico, surdegsbröd"
+                                    data-calories="210"
+                                    data-rec-name="Mineralvatten"
+                                    data-rec-img="public/images/water.png"
+                                    data-en="Details" data-sv="Detaljer">Detaljer</button>
+                                <button class="btn-add" data-name="Bruschetta Classica" data-price="89">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card animate-fade-in" data-category="appetizers">
+                        <div class="card-image-container">
+                            <img src="public/images/truffle_fries.png" alt="Truffle Fries" class="card-image">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <h3 class="item-name" data-en="Truffle Fries" data-sv="Tryffelpommes">Tryffelpommes</h3>
+                                <span class="item-price">75 SEK</span>
+                            </div>
+                            <p class="item-description" data-en="Crispy fries with parmesan and truffle oil" data-sv="Frasiga pommes med parmesan och tryffelolja">Frasiga pommes med parmesan och tryffelolja</p>
+                            <div class="card-actions">
+                                <button class="btn-secondary preview-btn" 
+                                    data-img="public/images/truffle_fries.png" 
+                                    data-name-en="Truffle Fries" data-name-sv="Tryffelpommes"
+                                    data-price="75 SEK" 
+                                    data-desc-en="Crispy fries with parmesan and truffle oil" data-desc-sv="Frasiga pommes med parmesan och tryffelolja"
+                                    data-ingredients-en="Russet potatoes, white truffle oil, grated parmesan, parsley, sea salt" data-ingredients-sv="Potatis, vit tryffelolja, riven parmesan, persilja, havssalt"
+                                    data-calories="450"
+                                    data-rec-name="Lokalbryggd öl"
+                                    data-rec-img="public/images/beer.png"
+                                    data-en="Details" data-sv="Detaljer">Detaljer</button>
+                                <button class="btn-add" data-name="Truffle Fries" data-price="75">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Course -->
+            <div class="menu-section" id="section-main">
+                <h2 class="section-title" data-en="Main Course" data-sv="Varmrätter">Varmrätter</h2>
+                <div class="menu-grid">
+                    <div class="menu-card animate-fade-in" data-category="main">
+                        <div class="card-image-container">
+                            <img src="public/images/salmon.png" alt="Grilled Salmon" class="card-image">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <h3 class="item-name" data-en="Grilled Salmon" data-sv="Grillad Lax">Grillad Lax</h3>
+                                <span class="item-price">245 SEK</span>
+                            </div>
+                            <p class="item-description" data-en="Fresh Atlantic salmon with lemon butter sauce" data-sv="Färsk atlantlax med citron- och smörsås">Färsk atlantlax med citron- och smörsås</p>
+                            <div class="card-actions">
+                                <button class="btn-secondary preview-btn" 
+                                    data-img="public/images/salmon.png" 
+                                    data-name-en="Grilled Salmon" data-name-sv="Grillad Lax"
+                                    data-price="245 SEK" 
+                                    data-desc-en="Fresh Atlantic salmon with lemon butter sauce" data-desc-sv="Färsk atlantlax med citron- och smörsås"
+                                    data-ingredients-en="Atlantic salmon, lemon zest, garlic butter, fresh dill, seasonal asparagus" data-ingredients-sv="Atlantlax, citronzest, vitlökssmör, färsk dill, sparris"
+                                    data-calories="520"
+                                    data-rec-name="Mineralvatten"
+                                    data-rec-img="public/images/water.png"
+                                    data-en="Details" data-sv="Detaljer">Detaljer</button>
+                                <button class="btn-add" data-name="Grilled Salmon" data-price="245">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card animate-fade-in" data-category="main">
+                        <div class="card-image-container">
+                            <img src="public/images/steak.png" alt="Ribeye Steak" class="card-image">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <h3 class="item-name" data-en="Ribeye Steak" data-sv="Entrecôte">Entrecôte</h3>
+                                <span class="item-price">320 SEK</span>
+                            </div>
+                            <p class="item-description" data-en="300g premium beef served with roasted potatoes" data-sv="300g premiumkött serveras med rostad potatis">300g premiumkött serveras med rostad potatis</p>
+                            <div class="card-actions">
+                                <button class="btn-secondary preview-btn" 
+                                    data-img="public/images/steak.png" 
+                                    data-name-en="Ribeye Steak" data-name-sv="Entrecôte"
+                                    data-price="320 SEK" 
+                                    data-desc-en="300g premium beef served with roasted potatoes" data-desc-sv="300g premiumkött serveras med rostad potatis"
+                                    data-ingredients-en="300g prime ribeye, rosemary, garlic cloves, sea salt, baby potatoes" data-ingredients-sv="300g premium entrecôte, rosmarin, vitlök, havssalt, delikatesspotatis"
+                                    data-calories="850"
+                                    data-rec-name="Lokalbryggd öl"
+                                    data-rec-img="public/images/beer.png"
+                                    data-en="Details" data-sv="Detaljer">Detaljer</button>
+                                <button class="btn-add" data-name="Ribeye Steak" data-price="320">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Drinks -->
+            <div class="menu-section" id="section-drinks">
+                <h2 class="section-title" data-en="Drinks" data-sv="Dryck">Dryck</h2>
+                <div class="menu-grid">
+                    <div class="menu-card animate-fade-in" data-category="drinks">
+                        <div class="card-image-container">
+                            <img src="public/images/water.png" alt="Sparkling Water" class="card-image">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <h3 class="item-name" data-en="Sparkling Water" data-sv="Mineralvatten">Mineralvatten</h3>
+                                <span class="item-price">35 SEK</span>
+                            </div>
+                            <p class="item-description" data-en="33cl local mineral water" data-sv="33cl lokalproducerat mineralvatten">33cl lokalproducerat mineralvatten</p>
+                            <div class="card-actions">
+                                <button class="btn-secondary preview-btn" 
+                                    data-img="public/images/water.png"
+                                    data-name-en="Sparkling Water" data-name-sv="Mineralvatten"
+                                    data-price="35 SEK"
+                                    data-desc-en="33cl local mineral water" data-desc-sv="33cl lokalproducerat mineralvatten"
+                                    data-ingredients-en="Mineral water, carbonic acid" data-ingredients-sv="Källvatten, kolsyra"
+                                    data-calories="0"
+                                    data-rec-name="Småländsk Ostkaka"
+                                    data-rec-img="public/images/cheesecake.png"
+                                    data-en="Details" data-sv="Detaljer">Detaljer</button>
+                                <button class="btn-add" data-name="Sparkling Water" data-price="35">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card animate-fade-in" data-category="drinks">
+                        <div class="card-image-container">
+                            <img src="public/images/beer.png" alt="Craft Beer" class="card-image">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <h3 class="item-name" data-en="Craft Beer" data-sv="Lokalbryggd öl">Lokalbryggd öl</h3>
+                                <span class="item-price">85 SEK</span>
+                            </div>
+                            <p class="item-description" data-en="Local Swedish IPA" data-sv="Hantverksöl (IPA) från lokalt bryggeri">Hantverksöl (IPA) från lokalt bryggeri</p>
+                            <div class="card-actions">
+                                <button class="btn-secondary preview-btn" 
+                                    data-img="public/images/beer.png" 
+                                    data-name-en="Craft Beer" data-name-sv="Lokalbryggd öl"
+                                    data-price="85 SEK" 
+                                    data-desc-en="Local Swedish IPA" data-desc-sv="Hantverksöl (IPA) från lokalt bryggeri"
+                                    data-ingredients-en="Malted barley, hops, yeast, mountain spring water" data-ingredients-sv="Kornmalt, humle, jäst, källvatten"
+                                    data-calories="180"
+                                    data-rec-name="Tryffelpommes"
+                                    data-rec-img="public/images/truffle_fries.png"
+                                    data-en="Details" data-sv="Detaljer">Detaljer</button>
+                                <button class="btn-add" data-name="Craft Beer" data-price="85">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dessert -->
+            <div class="menu-section" id="section-dessert">
+                <h2 class="section-title" data-en="Dessert" data-sv="Efterrätter">Efterrätter</h2>
+                <div class="menu-grid">
+                    <div class="menu-card animate-fade-in" data-category="dessert">
+                        <div class="card-image-container">
+                            <img src="public/images/fondant.png" alt="Chocolate Fondant" class="card-image">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <h3 class="item-name" data-en="Chocolate Fondant" data-sv="Chokladfondant">Chokladfondant</h3>
+                                <span class="item-price">95 SEK</span>
+                            </div>
+                            <p class="item-description" data-en="Warm chocolate cake with vanilla ice cream" data-sv="Varm chokladfondant med vaniljglass">Varm chokladfondant med vaniljglass</p>
+                            <div class="card-actions">
+                                <button class="btn-secondary preview-btn" 
+                                    data-img="public/images/fondant.png" 
+                                    data-name-en="Chocolate Fondant" data-name-sv="Chokladfondant"
+                                    data-price="95 SEK" 
+                                    data-desc-en="Warm chocolate cake with vanilla ice cream" data-desc-sv="Varm chokladfondant med vaniljglass"
+                                    data-ingredients-en="Callebaut dark chocolate, free-range eggs, Madagascar vanilla ice cream" data-ingredients-sv="Mörk choklad, ekologiska ägg, vaniljglass"
+                                    data-calories="650"
+                                    data-rec-name="Lokalbryggd öl"
+                                    data-rec-img="public/images/beer.png"
+                                    data-en="Details" data-sv="Detaljer">Detaljer</button>
+                                <button class="btn-add" data-name="Chocolate Fondant" data-price="95">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card animate-fade-in" data-category="dessert">
+                        <div class="card-image-container">
+                            <img src="public/images/cheesecake.png" alt="Swedish Cheesecake" class="card-image">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <h3 class="item-name" data-en="Swedish Cheesecake" data-sv="Småländsk Ostkaka">Småländsk Ostkaka</h3>
+                                <span class="item-price">110 SEK</span>
+                            </div>
+                            <p class="item-description" data-en="Traditional ostkaka with cloudberry jam" data-sv="Klassisk ostkaka med hjortronsylt och vispgrädde">Klassisk ostkaka med hjortronsylt och vispgrädde</p>
+                            <div class="card-actions">
+                                <button class="btn-secondary preview-btn" 
+                                    data-img="public/images/cheesecake.png" 
+                                    data-name-en="Swedish Cheesecake" data-name-sv="Småländsk Ostkaka"
+                                    data-price="110 SEK" 
+                                    data-desc-en="Traditional ostkaka with cloudberry jam" data-desc-sv="Klassisk ostkaka med hjortronsylt och vispgrädde"
+                                    data-ingredients-en="Cottage cheese, cloudberry jam, whipped cream, almonds" data-ingredients-sv="Ostmassa, hjortronsylt, vispgrädde, mandel"
+                                    data-calories="420"
+                                    data-rec-name="Lokalbryggd öl"
+                                    data-rec-img="public/images/beer.png"
+                                    data-en="Details" data-sv="Detaljer">Detaljer</button>
+                                <button class="btn-add" data-name="Swedish Cheesecake" data-price="110">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Help Section -->
+        <section id="help-section">
+            <h2 class="section-title" data-en="Need help?" data-sv="Behöver du hjälp?">Behöver du hjälp?</h2>
+            <div class="help-grid">
+                <button class="help-card" id="call-waiter">
+                    <span class="help-icon">🔔</span>
+                    <div class="help-text">
+                        <h4 data-en="Call Waiter" data-sv="Kontakta servitör">Kontakta servitör</h4>
+                        <p data-en="We'll be right with you" data-sv="Vi hjälper dig strax">Vi hjälper dig strax</p>
+                    </div>
+                </button>
+                <button class="help-card" id="book-table">
+                    <span class="help-icon">📅</span>
+                    <div class="help-text">
+                        <h4 data-en="Book a Table" data-sv="Boka bord">Boka bord</h4>
+                        <p data-en="Visit us again soon" data-sv="Besök oss snart igen">Besök oss snart igen</p>
+                    </div>
+                </button>
+                <button class="help-card" id="ask-allergens">
+                    <span class="help-icon">⚠️</span>
+                    <div class="help-text">
+                        <h4 data-en="Allergens" data-sv="Allergener">Allergener</h4>
+                        <p data-en="Tell us about your needs" data-sv="Berätta om dina behov">Berätta om dina behov</p>
+                    </div>
+                </button>
+            </div>
+            <div class="footer-note">
+                <p>&copy; 2026 Demo Restaurant. Scandinavian Crafted.</p>
+            </div>
+        </section>
+    </section>
+
+    <!-- Preview Modal -->
+    <div id="preview-modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-layout">
+            <div class="modal-image-section">
+                <img src="" alt="Preview" class="modal-hero-image" loading="lazy">
+            </div>
+            <div class="modal-info-section">
+                <div class="modal-header-info">
+                    <h2 id="modal-item-name"></h2>
+                    <span id="modal-item-price"></span>
+                </div>
+                <p id="modal-item-desc"></p>
+                
+                <div class="item-details-grid">
+                    <div class="info-block">
+                        <h3 data-en="Ingredients" data-sv="Ingredienser">Ingredienser</h3>
+                        <p id="modal-item-ingredients"></p>
+                    </div>
+                    <div class="info-block">
+                        <h3 data-en="Energy" data-sv="Energi">Energi</h3>
+                        <div class="nutrition-flex">
+                            <span id="modal-item-calories" class="calorie-badge"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommended-section">
+                    <h3 data-en="Recommended with" data-sv="Rekommenderas med">Rekommenderas med</h3>
+                    <div class="rec-card">
+                        <img src="" alt="Recommended" id="modal-rec-img">
+                        <div class="rec-info">
+                            <span id="modal-rec-name"></span>
+                            <button class="btn-add-small">Add +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer-actions">
+                    <button class="btn-primary-large" id="modal-add-btn" data-en="Add to Order" data-sv="Lägg till">Lägg till</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cart Side/Bottom Panel -->
+    <div id="cart-panel">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2 data-en="Your Selection" data-sv="Din beställning">Din beställning</h2>
+                <span id="close-cart">&times;</span>
+            </div>
+            <div id="cart-items">
+                <!-- Items populated by JS -->
+                <p class="empty-msg">No items added yet</p>
+            </div>
+            <div class="cart-footer">
+                <div class="total-section">
+                    <div class="total-row nutrition-total">
+                        <span data-en="⚡ Estimated Energy" data-sv="⚡ Beräknad energi">⚡ Beräknad energi</span>
+                        <span id="cart-total-calories">0 kcal</span>
+                    </div>
+                    <div class="total-row main-total">
+                        <span data-en="Total" data-sv="Totalt">Totalt</span>
+                        <span id="cart-total">0 SEK</span>
+                    </div>
+                </div>
+                <div class="cart-actions">
+                    <button id="continue-browsing" class="btn-secondary" data-en="Continue Selection" data-sv="Fortsätt välja">Fortsätt välja</button>
+                    <button id="send-order" class="btn-primary" data-en="Send Order Request" data-sv="Skicka beställning">Skicka beställning</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cart Updated Message -->
+    <div id="success-toast" data-en="Added to Basket!" data-sv="Tillagd i korgen!">Tillagd i korgen!</div>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

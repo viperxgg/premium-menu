@@ -7,6 +7,11 @@ window.onerror = function(msg, url, line, col, error) {
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Premium Menu Script v3 Initialized');
 
+    // --- Supabase Config ---
+    const supabaseUrl = 'https://cewfpbydcltdriveqklo.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNld2ZwYnlkY2x0ZHJpdmVxa2xvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY1MDAyMTMsImV4cCI6MjA5MjA3NjIxM30.-gI-eavwvItBFNfxgjQDMsyYYhsYGF938YudR9yiPmE';
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
     // Selectors
     const homeScreen = document.getElementById('home-screen');
     const menuScreen = document.getElementById('menu-screen');
@@ -182,21 +187,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const successToast = document.getElementById('success-toast');
 
     // --- Event Emitter (Local Storage for Demo) ---
-    function emitEvent(type, content) {
-        const events = JSON.parse(localStorage.getItem('restaurant_events') || '[]');
-        const newEvent = {
-            id: Date.now(),
-            table: tableNumber,
-            type: type, // 'order' or 'assistance'
-            content: content,
-            status: 'pending',
-            timestamp: new Date().toLocaleTimeString('sv-SE', { hour: '2-digit', minute: '2-digit' })
-        };
-        events.unshift(newEvent);
-        localStorage.setItem('restaurant_events', JSON.stringify(events));
-        
-        // Trigger storage event manually for same-window testing if needed
-        window.dispatchEvent(new Event('storage'));
+    async function emitEvent(type, content) {
+        // Send to Supabase
+        const { data, error } = await supabase
+            .from('restaurant_events')
+            .insert([
+                { 
+                    type: type, 
+                    table_number: tableNumber, 
+                    content: typeof content === 'object' ? JSON.stringify(content) : content,
+                    status: 'new'
+                }
+            ]);
+
+        if (error) {
+            console.error('Error sending event:', error);
+            // Fallback to localStorage if Supabase fails
+            const events = JSON.parse(localStorage.getItem('restaurant_events') || '[]');
+            const newEvent = { id: Date.now(), table: tableNumber, type, content, status: 'pending', timestamp: new Date().toLocaleTimeString('sv-SE') };
+            events.unshift(newEvent);
+            localStorage.setItem('restaurant_events', JSON.stringify(events));
+            window.dispatchEvent(new Event('storage'));
+        }
     }
 
     function updateCartUI() {

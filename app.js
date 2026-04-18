@@ -77,20 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Page Transition ---
-    if (viewMenuBtn) {
-        viewMenuBtn.addEventListener('click', () => {
-            homeScreen.style.opacity = '0';
-            setTimeout(() => {
-                homeScreen.style.display = 'none';
-                menuScreen.style.display = 'block';
-                setTimeout(() => {
-                    menuScreen.style.opacity = '1';
-                    revealCards();
-                }, 50);
-            }, 500);
-        });
-    }
+    // revealCards called inside splash timer below
 
     function revealCards() {
         const cards = document.querySelectorAll('.menu-card');
@@ -425,7 +412,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (loadingOverlay) {
         setTimeout(() => {
             loadingOverlay.style.opacity = '0';
-            setTimeout(() => loadingOverlay.style.display = 'none', 500);
+            setTimeout(() => {
+                loadingOverlay.style.display = 'none';
+                revealCards(); // Reveal cards immediately after splash
+            }, 500);
         }, 800);
     }
 });
